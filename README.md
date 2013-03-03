@@ -1,9 +1,9 @@
 # Vagrant Riak Cluster
 
-This is a Chef repository to bring up a Riak cluster within Vagrant. Each node
-will run Ubuntu `12.04 64-bit` with `1024MB` of RAM by default. If you wish
-to tune the node or memory count, you'll have to edit the `Vagrantfile`
-directly.
+This is a Vagrant project powered by Chef to bring up a local Riak cluster.
+Each node can run either `Ubuntu 12.04 32-bit` or `CentOS 6.3` with `1024MB`
+of RAM by default. If you want to tune the OS or node/memory count, you'll
+have to edit the `Vagrantfile` directly.
 
 ## Configuration
 

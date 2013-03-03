@@ -1,6 +1,7 @@
 site :opscode
 
 cookbook "apt"
+cookbook "yum"
 cookbook "ntp"
 cookbook "nmap"
 cookbook "htop"

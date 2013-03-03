@@ -1,7 +1,6 @@
 name "base"
 description "Base role."
 run_list(
-  "recipe[apt]",
   "recipe[ntp]",
   "recipe[nmap]",
   "recipe[htop]",
@@ -11,7 +10,6 @@ run_list(
 default_attributes(
   "authorization" => {
     "sudo" => {
-      "groups" => [ "sudo" ],
       "passwordless" => true
     }
   },
