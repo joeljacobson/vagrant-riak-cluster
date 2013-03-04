@@ -4,12 +4,12 @@
 require "berkshelf/vagrant"
 
 CENTOS = {
-  sudo_group: "sudo",
+  sudo_group: "wheel",
   box: "opscode-centos-6.3",
   url: "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-11.2.0.box"
 }
 UBUNTU = {
-  sudo_group: "wheel",
+  sudo_group: "sudo",
   box: "opscode-ubuntu-12.04",
   url: "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.2.0.box"
 }
