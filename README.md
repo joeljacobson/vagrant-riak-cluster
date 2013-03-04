@@ -47,15 +47,20 @@ the following methods provided by `erlang_template_helper`:
 
 ## How is this better than `make devrel`?
 
-Standing up a local Riak cluster within Vagrant is better than `make devrel` because:
+Standing up a local Riak cluster within Vagrant is better than `make devrel`
+because:
 
-* Opportunity to install Riak on the operating system you intend to deploy with
-* Opportunity to use the actual packages you'll deploy with in production
-* Test failure scenarios that include the machine (failed disks, network partitions, etc)
-* Test with different resource allocations
+* It installs Riak on the operating system you intend to deploy on in
+  production
+* It uses the actual packages you'll deploy with in production
+* It allows you to test failure scenarios that include the machine (failed
+  disks, network partitions, etc.)
 
 ## How is this worse than `make devrel`?
 
-* Takes longer to stand up a cluster
-* Uses more resoruces on your local machine
-* Involves VirtualBox
+Standing up a local Riak cluster within Vagrant is worse than `make devrel`
+because:
+
+* It takes longer (minutes) to stand up a cluster
+* It uses more resources on your local machine
+* It involves VirtualBox
