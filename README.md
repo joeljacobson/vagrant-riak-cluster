@@ -10,7 +10,10 @@ have to edit the `Vagrantfile` directly.
 ### Install Vagrant
 
 Download and install Vagrant via the
-[Vagrant installer](http://downloads.vagrantup.com/).
+[Vagrant installer](http://downloads.vagrantup.com/tags/v1.0.7).
+
+**Note**: It is necessary, at present, to install Vagrant 1.0.7 due to a
+compatibility issue.
 
 ### Install cookbooks
 
@@ -34,6 +37,15 @@ between `1` and the number of nodes defined for the cluster (defaults to `3`).
 ``` bash
 $ vagrant ssh riak1
 ```
+
+## Vagrant boxes
+
+The Vagrant boxes used in this project were created by
+[Veewee](https://github.com/jedi4ever/veewee/). To view the Veewee definitions,
+please follow the links below:
+
+* [opscode-centos-6.3](https://github.com/opscode/bento/tree/master/definitions/centos-6.3-i386)
+* [opscode-ubuntu-12.04](https://github.com/opscode/bento/tree/master/definitions/ubuntu-12.04-i386)
 
 ## Erlang template helper
 
