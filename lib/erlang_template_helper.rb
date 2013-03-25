@@ -235,3 +235,11 @@ module Eth
     end
   end
 end
+
+class ::String
+  include Eth::Erlang::String
+end
+
+class ::Array
+  include Eth::Erlang::Array
+end
