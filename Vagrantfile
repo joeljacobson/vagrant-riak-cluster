@@ -1,8 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-require "berkshelf/vagrant"
-
 CENTOS = {
   sudo_group: "wheel",
   box: "opscode-centos-6.3",
@@ -38,10 +36,28 @@ Vagrant::Config.run do |cluster|
       config.vm.host_name = "riak#{index}"
       config.vm.network :hostonly, "#{BASE_IP}.#{last_octet}"
       config.vm.share_folder "lib", "/tmp/vagrant-chef-1/lib", "lib"
+      # Hack for Berkshelf until the following bug is resolved:
+      # https://github.com/RiotGames/berkshelf-vagrant/issues/4
+      config.vm.provision :shell, :inline => <<-SCRIPT.gsub(/^ {8}/, '')
+        #!/bin/sh
+        if [ -x /usr/bin/apt-get ]; then
+          sudo apt-get install -qq -y git
+        else
+          sudo yum install -q -y git
+        fi
+        if [ ! -x /opt/chef/embedded/bin/berks ]; then
+          echo "Installing berkshelf"
+          sudo /opt/chef/embedded/bin/gem install berkshelf --no-ri --no-rdoc --quiet
+        fi
+        echo "Berkshelf: Installing cookbooks"
+        sudo /opt/chef/embedded/bin/berks install -b /vagrant/Berksfile -p /tmp/vagrant-chef-1/chef-solo-1/cookbooks
+        sudo mv /tmp/vagrant-chef-1/chef-solo-1/cookbooks/`ls -1 /tmp/vagrant-chef-1/chef-solo-1/cookbooks/`/* /tmp/vagrant-chef-1/chef-solo-1/cookbooks
+      SCRIPT
 
       # Provision using Chef.
       config.vm.provision :chef_solo do |chef|
         chef.roles_path = "roles"
+        chef.cookbooks_path = "cookbooks"
 
         if config.vm.box =~ /ubuntu/
           chef.add_recipe "apt"
