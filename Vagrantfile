@@ -16,6 +16,12 @@ BASE_IP       = "33.33.33"
 IP_INCREMENT  = 10
 
 Vagrant.configure("2") do |cluster|
+  # Ensure latest version of Chef is installed.
+  cluster.omnibus.chef_version = :latest
+
+  # Utilize the Berkshelf plugin to resolve cookbook dependencies.
+  cluster.berkshelf.enabled = true
+
   (1..NODES).each do |index|
     last_octet = index * IP_INCREMENT
 
@@ -39,7 +45,6 @@ Vagrant.configure("2") do |cluster|
       # Provision using Chef.
       config.vm.provision :chef_solo do |chef|
         chef.roles_path = "roles"
-        chef.cookbooks_path = "cookbooks"
 
         if config.vm.box =~ /ubuntu/
           chef.add_recipe "apt"

@@ -12,6 +12,13 @@ have to edit the `Vagrantfile` directly.
 Download and install Vagrant via the
 [Vagrant installer](http://downloads.vagrantup.com/).
 
+### Install Vagrant plugins
+
+``` bash
+$ vagrant plugin install vagrant-berkshelf
+$ vagrant plugin install vagrant-omnibus
+```
+
 ### Launch cluster
 
 ``` bash
