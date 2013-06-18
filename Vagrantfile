@@ -2,12 +2,10 @@
 # vi: set ft=ruby :
 
 CENTOS = {
-  sudo_group: "wheel",
   box: "opscode-centos-6.4",
   url: "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.4_chef-11.4.4.box"
 }
 UBUNTU = {
-  sudo_group: "sudo",
   box: "opscode-ubuntu-12.04",
   url: "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.4.4.box"
 }
@@ -54,11 +52,6 @@ Vagrant.configure("2") do |cluster|
         chef.add_role "riak"
 
         chef.json = {
-          "authorization" => {
-            "sudo" => {
-              "groups" => [ OS[:sudo_group] ],
-            }
-          },
           "riak" => {
             "args" => {
               "+S" => 1,
