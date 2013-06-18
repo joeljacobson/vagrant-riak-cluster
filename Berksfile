@@ -7,5 +7,5 @@ cookbook "nmap"
 cookbook "htop"
 cookbook "openssh"
 
-cookbook "riak", github: "basho/riak-chef-cookbook", ref: "2.0.0"
+cookbook "riak", github: "basho/riak-chef-cookbook", ref: "2.1.0"
 cookbook "riak-ssl", github: "hectcastro/chef-riak-ssl", ref: "0.1.0"
