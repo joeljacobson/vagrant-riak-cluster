@@ -10,7 +10,12 @@ UBUNTU = {
   url: "https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
 }
 
-NODES         = 3
+if ENV["NUM_NODES"] != nil
+    nodes = ENV['NUM_NODES'].to_i
+  else
+    nodes = 3
+end
+NODES = nodes
 OS            = UBUNTU
 BASE_IP       = "33.33.33"
 IP_INCREMENT  = 10
